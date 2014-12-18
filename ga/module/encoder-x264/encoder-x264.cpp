@@ -17,6 +17,7 @@
  */
 
 #include <stdio.h>
+#include <stdint.h>
 
 #include "vsource.h"
 #include "server.h"
@@ -549,7 +550,7 @@ vencoder_raw(void *arg, int *size) {
 	int64_t in = (int64_t) arg;
 	int iid = (int) (in & 0xffffffffLL);
 #else
-	int iid = (int) arg;
+	int iid = (intptr_t) arg;
 #endif
 	if(vencoder_initialized == 0)
 		return NULL;
